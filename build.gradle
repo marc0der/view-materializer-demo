@@ -24,3 +24,24 @@ idea {
         testSourceDirs += file("src/acceptance/resources")
     }
 }
+
+configurations {
+    acceptanceTestCompile.extendsFrom testCompile
+    acceptanceTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+    acceptanceTest {
+        groovy.srcDir file('src/acceptance/groovy')
+        resources.srcDir     file('src/acceptance/resources')
+        compileClasspath = sourceSets.main.output + sourceSets.test.output + configurations.acceptanceTestCompile
+        runtimeClasspath = output + compileClasspath + configurations.acceptanceTestRuntime
+    }
+}
+
+task acceptanceTest(type: Test) {
+    testClassesDir = sourceSets.acceptanceTest.output.classesDir
+    classpath = sourceSets.acceptanceTest.runtimeClasspath
+}
+
+check.dependsOn acceptanceTest
