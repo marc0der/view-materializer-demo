@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
 apply plugin: 'scala'
+apply plugin: 'idea'
 
 repositories {
     jcenter()
@@ -15,4 +16,11 @@ dependencies {
         exclude module: "groovy-all"
     }
     testCompile 'com.wiredforcode:groovy-scala-extension-module:0.1'
+}
+
+idea {
+    module {
+        testSourceDirs += file("src/acceptance/groovy")
+        testSourceDirs += file("src/acceptance/resources")
+    }
 }
