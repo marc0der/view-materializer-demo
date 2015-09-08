@@ -21,7 +21,7 @@ dependencies {
     testCompile ("org.spockframework:spock-core:1.0-groovy-2.4") {
         exclude module: "groovy-all"
     }
-    testCompile 'com.wiredforcode:groovy-scala-extension-module:0.1'
+    testCompile 'com.wiredforcode:groovy-scala-extension-module:0.3'
 }
 
 idea {
