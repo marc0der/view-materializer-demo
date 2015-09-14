@@ -10,7 +10,8 @@ It relies on the following technology stack:
 * Gradle
 * Spock framework
 * Scala
-* Akka
+* Scala Pickling
+* Akka with Akka Streams
 * Kafka
 * Reactive Kafka for Scala
 * Elasticsearch
